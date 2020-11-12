@@ -1,0 +1,4 @@
+{
+    "malt_type": "SQL",
+    "data": "SELECT * FROM TABLE1"
+}

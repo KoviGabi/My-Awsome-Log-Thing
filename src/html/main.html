@@ -22,14 +22,7 @@
             //win.showDevTools();
     
             var menu = new nw.Menu({ type: 'menubar' });
-    
-            var submenu = new nw.Menu();
-            submenu.append(new nw.MenuItem({
-                label: 'Exit',
-                click: function(){
-                    nw.App.quit();
-                }
-            }));
+
             menu.append(new nw.MenuItem({
                 label: 'Server',
                 click: function(){
@@ -43,8 +36,7 @@
                         });
                     });
                 }
-            }));
-    
+            }));    
             nw.Window.get().menu = menu;
         </script>
     </body>

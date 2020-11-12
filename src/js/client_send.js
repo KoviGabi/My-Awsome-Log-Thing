@@ -1,7 +1,11 @@
 var net = require('net');
-var options = {port: 9999};
+var JsonData = require('../json/data.json');
 
+var options = {port: 9999};
 var data = "";
+
+//////////
+//////////
 var logType;
 var logData;
 
@@ -17,33 +21,23 @@ window.getData = function getData(){
 window.Send = function Send(){
     sendData();
 }
+//////////
+//////////
 
-export function getPath(dataData){
+export function getData(dataData){
     data = dataData;
     sendData();
 }
-function sendData(){    
+function sendData(){
     var client = net.createConnection(options);
     client.on('connect', function() {
-    
-    
-    //console.log(data);
-    //console.log(type);
-
-        /*var text2 = data;
-        var buff = new Buffer.from(text2);
-        var base64data = buff.toString('base64');*/
         
-        //console.log('"' + text + " " + text2 + '" converted to Base64 is "' + base64type + '"');
-        //client.write(base64type + "/" + base64data);
+        //console.log(data);
+        //console.log(type);
 
-
-        ////
-        ////JSON-ba type, length, data, time
-        ////
-
-
-        if(data != ""){            
+        console.log(JsonData);
+        client.write(JsonData);
+        /*if(data != ""){            
             client.write(data);
             console.log(data);
             data = "";
@@ -51,7 +45,7 @@ function sendData(){
         else{
             client.write(logType + " " + logData)
             console.log(logType + " " + logData);
-        }
+        }*/
         client.end();
     });
     

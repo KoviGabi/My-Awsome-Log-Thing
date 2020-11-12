@@ -1,4 +1,4 @@
-import {writeToJSON} from './toJson.js';
+import {getData} from './client_send.js';
 
 window.encodeFile = function encodeFile() {
     var filesSelected = document.getElementById("inputFile").files;
@@ -32,8 +32,7 @@ window.encodeFile = function encodeFile() {
             //console.log(typeOfFile);
             //console.log(data);
             //console.log(srcData);
-            writeToJSON(srcData);
-            //writeToJSON(typeOfFile, data);
+            getData(/*typeOfData,*/srcData);
         }   
         fileReader.readAsDataURL(fileToLoad);
     }

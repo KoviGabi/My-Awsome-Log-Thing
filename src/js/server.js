@@ -1,6 +1,5 @@
 var net = require('net');
 //var colors = require('colors');
-//const { type } = require('os');
 
 var server = net.createServer();
 var data = "";
@@ -16,25 +15,24 @@ server.on('connection', function(socket) {
         //console.log(d);
         console.log(data.length);
         //console.log(typeof(data));
-        //console.log(Buffer.from(d.toString('utf8'), 'base64').toString('ascii').blue);
-        //console.log((new Date()).getMilliseconds());
-        //console.log('"' + d + '" converted from Base64 to ASCII is "' + text + '"');
 
         var imgData = data.split(",");
         var header = imgData[0].split(":");
         var type = header[1].split(";");
         
+        console.log("3");
         imgData = imgData[1];
         var typeOfFile = type[0];
         console.log(typeOfFile);
         var image = typeOfFile.split('/');
-        
+        console.log("2");
         //Kép megjelenítése, ha bármilyen kép kiterjesztésű a fájl.
         if(image[0] == "image"){                
             //Kép megjelenítése
             var newImage = document.createElement('img');
             newImage.src = data;
             document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+            console.log('1');
         }
         
         //console.log('New data from %s: %s'.blue, remoteAddress, d);
