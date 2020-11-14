@@ -6,11 +6,32 @@
     </head>
     <body onload='openDevTools()'>
         <div id="imgTest"></div>
+        <div id="videoTest"></div>
+        
         <script src="../js/server.js"></script>
         <script>
             function openDevTools(){
                 nw.Window.get().showDevTools();
             }            
+        </script>
+        <script type="text/javascript">    
+            var menu = new nw.Menu({ type: 'menubar' });
+
+            menu.append(new nw.MenuItem({
+                label: 'Open new Client',
+                click: function(){
+                    var parentWin = window;
+    
+                    nw.Window.open('./html/client.html', {}, function(win) {
+                        parentWin.localStorage.setItem('child_open', true);
+    
+                        win.on('closed', function() {
+                            parentWin.localStorage.removeItem('child_open');
+                        });
+                    });
+                }
+            }));    
+            nw.Window.get().menu = menu;
         </script>
     </body>
 </html>

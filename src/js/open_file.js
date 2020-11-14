@@ -1,5 +1,6 @@
 import {getData} from './client_send.js';
 
+//File beolvasása és base64 továbbadása a küldő scriptnek.
 window.encodeFile = function encodeFile() {
     var filesSelected = document.getElementById("inputFile").files;
     if (filesSelected.length > 0) {
@@ -9,6 +10,7 @@ window.encodeFile = function encodeFile() {
         fileReader.onload = function(fileLoadedEvent) {
             var srcData = fileLoadedEvent.target.result; // <--- data: teljes base64
 
+            ////////KUKA ha tesztelésnek vége////////
             var data = srcData.split(",");
             //console.log(data[0]);
             //console.log(data[1]); ---> Base64 adat rész
@@ -29,10 +31,9 @@ window.encodeFile = function encodeFile() {
                 newImage.src = srcData;
                 document.getElementById("imgTest").innerHTML = newImage.outerHTML;
             }
-            //console.log(typeOfFile);
-            //console.log(data);
-            //console.log(srcData);
-            getData(/*typeOfData,*/srcData);
+            ////////KUKA ha tesztelésnek vége////////
+
+            getData(srcData);
         }   
         fileReader.readAsDataURL(fileToLoad);
     }
