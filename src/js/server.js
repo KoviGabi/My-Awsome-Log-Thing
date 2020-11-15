@@ -1,3 +1,6 @@
+import * as json_handler from "./json_handler.js";
+//import {json_handler} from './json_handler.js';
+//var json_handler = require('./json_handler');
 var net = require('net');
 //var colors = require('colors');
 
@@ -31,8 +34,9 @@ server.listen(9999, function(){
 function Show(){    
     try {
         var data2 = JSON.parse(data);
-        console.log(data2);
+        //console.log(data2.malt_type);
         /////// +JSON Handler kell
+        json_handler.json_handler(data2.malt_type);
     } catch (e) {
         console.log(e);
     }
