@@ -1,8 +1,5 @@
 import * as json_handler from "./json_handler.js";
-//import {json_handler} from './json_handler.js';
-//var json_handler = require('./json_handler');
 var net = require('net');
-//var colors = require('colors');
 
 var server = net.createServer();
 var data = "";
@@ -22,8 +19,8 @@ server.on('connection', function(socket) {
         data = "";
         console.log("Connection is closed with: " + remoteAddress);
     });
-    socket.on('error', function(err) {
-        console.log("Error: " + err.message);
+    socket.on('error', function(e) {
+        console.log("Error: " + e.message);
     });
 });
 
@@ -32,10 +29,10 @@ server.listen(9999, function(){
 });
 
 function Show(){    
+
+    //JSON Handler
     try {
         var data2 = JSON.parse(data);
-        //console.log(data2.malt_type);
-        /////// +JSON Handler kell
         json_handler.json_handler(data2.malt_type, data2.malt_data);
     } catch (e) {
         console.log(e);
