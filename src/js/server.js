@@ -36,7 +36,7 @@ function Show(){
         var data2 = JSON.parse(data);
         //console.log(data2.malt_type);
         /////// +JSON Handler kell
-        json_handler.json_handler(data2.malt_type);
+        json_handler.json_handler(data2.malt_type, data2.malt_data);
     } catch (e) {
         console.log(e);
     }
