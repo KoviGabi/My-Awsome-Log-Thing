@@ -19,7 +19,7 @@ window.encodeFile = function encodeFile() {
             //console.log(header[1]); ---> Fejléc rész
             var type = header[1].split(";");
             //console.log(type[0]); ---> File típusa
-            
+            console.log(type);
             data = data[1];
             var typeOfFile = type[0];
             var image = typeOfFile.split('/');

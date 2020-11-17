@@ -1,4 +1,5 @@
 import * as json_handler from "./json_handler.js";
+import * as base64_handler from "./base64_handler.js";
 var net = require('net');
 
 var server = net.createServer();
@@ -14,7 +15,7 @@ server.on('connection', function(socket) {
     });
     socket.on('close', function() {
 
-        Show();
+        DataHandler();
 
         data = "";
         console.log("Connection is closed with: " + remoteAddress);
@@ -28,41 +29,24 @@ server.listen(9999, function(){
     console.log("Server is listening on: " + server.address());
 });
 
-function Show(){    
+function DataHandler(){    
 
-    //JSON Handler
+    //Is it JSON?
     try {
         var data2 = JSON.parse(data);
         json_handler.json_handler(data2.malt_type, data2.malt_data);
     } catch (e) {
+        console.log("Not JSON!")
         console.log(e);
     }
 
-    //Base64 File Handler
+    //If not JSON, is it Base64 encoded?
     try {
-        var imgData = data.split(",");
-        var header = imgData[0].split(":");
-        var type = header[1].split(";");        
-        imgData = imgData[1];
-        var typeOfFile = type[0];
-        var image = typeOfFile.split('/');
-
-        //Kép megjelenítése, ha bármilyen kép kiterjesztésű a fájl.
-        if(image[0] == "image"){
-            //Kép megjelenítése
-            var newImage = document.createElement('img');
-            newImage.src = data;
-            document.getElementById("imgTest").innerHTML = newImage.outerHTML;
-        }
-        
-        //Videó megjelenítése. MKV-vel nem működik, MP4-el igen.
-        else if(image[0] == "video"){
-            //Videó megjelenítése
-            document.getElementById("videoTest").innerHTML = "<video width='320' height='240' controls><source src='" + data + "' type='" + typeOfFile + "'></video>"
-        }
-        /*else if(image[0] == "audio"){
-        }*/
+        base64_handler.Base64_Handler(data);
     } catch (e) {
+        console.log("Not base64 encoded file!")
         console.log(e);
     }
+
+    //If not any of the above..
 }
