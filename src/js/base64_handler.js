@@ -44,4 +44,7 @@ export function Base64_Handler(data){
         document.body.appendChild(audio);
         document.body.appendChild(br);
     }
+    else{
+        throw "Not media file!";
+    }
 }

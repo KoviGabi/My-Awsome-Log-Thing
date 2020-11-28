@@ -1,5 +1,6 @@
 import * as json_handler from "./json_handler.js";
 import * as base64_handler from "./base64_handler.js";
+import * as unknown_handler from "./unknown_handler.js";
 var net = require('net');
 
 var server = net.createServer();
@@ -15,7 +16,7 @@ server.on('connection', function(socket) {
     });
     socket.on('close', function() {
 
-        DataHandler();
+        HandlerSelector();
 
         data = "";
         console.log("Connection is closed with: " + remoteAddress);
@@ -29,24 +30,33 @@ server.listen(9999, function(){
     console.log("Server is listening on: " + server.address());
 });
 
-function DataHandler(){    
-
-    //Is it JSON?
-    try {
-        var data2 = JSON.parse(data);
-        json_handler.json_handler(data2.malt_type, data2.malt_data);
-    } catch (e) {
-        console.log("Not JSON!")
-        console.log(e);
+function HandlerSelector(){
+    if (DataHandler("Not JSON!", "JSON")) {
+        if (DataHandler("Not base64 encoded media file!", "base64")) {
+            DataHandler("Too big and not handled file format!", "else");
+        }
     }
-
-    //If not JSON, is it Base64 encoded?
+}
+function DataHandler(exception_msg, handler){
     try {
-        base64_handler.Base64_Handler(data);
+        switch (handler) {
+            case "JSON":
+                var jsonData = JSON.parse(data);
+                json_handler.json_handler(jsonData.malt_type, jsonData.malt_data);
+                break;
+            case "base64":
+                base64_handler.Base64_Handler(data);
+                break;
+            case "else":
+                unknown_handler.Unknown_Handler(data);
+                break;
+            default:
+                break;
+        }
+        return false;
     } catch (e) {
-        console.log("Not base64 encoded file!")
+        console.log(exception_msg);
         console.log(e);
+        return true;
     }
-
-    //If not any of the above..
 }
