@@ -1,6 +1,32 @@
+var encodedData;
+var type;
+
 export function Unknown_Handler(data, length){
-    var type = data.substring(data.indexOf(":")+1, data.indexOf(";"));
-    var encodedData = Buffer.from(data.split(",")[1], 'base64').toString();
+    if (DataHandler(data, "base64")){
+        DataHandler(data, "string");        
+    }
+    LogWriter(data, length);
+}
+function DataHandler(data, handler){
+    try {
+        switch (handler) {
+            case "base64":
+                encodedData = Buffer.from(data.split(",")[1], 'base64').toString();
+                type = data.substring(data.indexOf(":")+1, data.indexOf(";"));
+                break;
+            case "string":
+                encodedData = data;
+                type = "string";
+                break;
+            default:
+                break;
+        }
+        return false;
+    } catch (e) {
+        return true;
+    }
+}
+function LogWriter(data, length){
     var p = document.createElement("P");
     p.className = "SOMETHING";
     p.innerHTML = (type.toUpperCase() + ": " + encodedData);
