@@ -1,26 +1,17 @@
 body {background-color: black;}
 
-.SQL
-{
+.SQL{
     color:cyan;
 }
-.ERROR
-{
+.ERROR{
     color:red;
 }
-.EXCEPTION
-{
+.EXCEPTION{
     color:yellow;
 }
-.LOG
-{
+.LOG{
     color:white;
 }
-.URL
-{
-    color:blue;
-}
-.SOMETHING
-{
+.SOMETHING{
     color:grey
 }

@@ -1,14 +1,14 @@
-export function Unknown_Handler(data){
-    var fileData = data.split(",");
-    var header = fileData[0].split(":");
-    var types = header[1].split(";");
-    var typeOfFile = types[0];
-    var type = typeOfFile.split('/');
-
-    if(data.length < 1000){
-        var p = document.createElement("P");
-        p.className = "SOMETHING";
-        p.innerHTML = (type.toString().toUpperCase() + ": " + Buffer.from(fileData[1].toString('utf8'), 'base64').toString('utf8'));
-        document.body.appendChild(p);
+export function Unknown_Handler(data, length){
+    var type = data.substring(data.indexOf(":")+1, data.indexOf(";"));
+    var encodedData = Buffer.from(data.split(",")[1], 'base64').toString();
+    var p = document.createElement("P");
+    p.className = "SOMETHING";
+    p.innerHTML = (type.toUpperCase() + ": " + encodedData);
+    if (data.length < 1000) {
+        p.innerHTML = (type.toUpperCase() + ": " + encodedData);
     }
+    else{
+        p.innerHTML = (type.toUpperCase() + ": longer than " + length + " characters!");
+    }    
+    document.body.appendChild(p);
 }

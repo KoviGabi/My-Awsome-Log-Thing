@@ -1,49 +1,29 @@
-var malt_type;
-var malt_data;
-var isSomething;
-
-export function json_handler(type, data){
-    malt_type = type.toUpperCase();
-    malt_data = data;
-
-    if (!functions[type.toUpperCase()]) {
-        isSomething = true;
-        functions["SOMETHING"] && functions["SOMETHING"]();
-        return;
-    } 
-    else {
-        isSomething = false;
-        functions[type.toUpperCase()] && functions[type.toUpperCase()]();
-    }
-}
-
-const functions = {
-    SQL: function SQL(){
-        console.log(malt_type + ": " + malt_data);
-        LogWriter();
-    },
-    ERROR: function ERROR(){
-        console.log(malt_type + ": " + malt_data);
-        LogWriter();
-    },
-    EXCEPTION: function EXCEPTION(){
-        console.log(malt_type + ":" + malt_data);
-        LogWriter();
-    },
-    LOG: function LOG(){
-        console.log(malt_type + ": " + malt_data);
-        LogWriter();
-    },
-    SOMETHING: function SOMETHING(){
-        console.log(malt_type + ": " + malt_data);
-        LogWriter();
-    }
+const log_types = {
+    SQL: "SQL", ERROR: "ERROR", EXCEPTION: "EXCEPTION", LOG: "LOG"
 };
 
-//Külön JS-be kéne később
+var malt_type;
+var malt_data;
+var jsonData;
+
+export function Json_Handler(data){
+    var type = data.substring(data.indexOf("/")+1, data.indexOf(";"));
+
+    if(type == "json"){
+        var srcData = Buffer.from(data.split(",")[1], "base64").toString();
+        jsonData = JSON.parse(srcData);
+    }
+    else{
+        jsonData = JSON.parse(data);
+    }
+    malt_type = jsonData.malt_type.toUpperCase();
+    malt_data = jsonData.malt_data;
+    LogWriter();    
+    return true;
+}
 function LogWriter() {
     var p = document.createElement("P");
-    if (isSomething == false) {
+    if (log_types[malt_type]) {
         p.className = malt_type;
     } 
     else {

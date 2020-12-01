@@ -2,18 +2,10 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Client</title>
+        <title>New Client</title>
     </head>
-    <body onload='openDevTools()'>
+    <body>
         <input id="inputFile" type="file" onchange="encodeFile()"/>
-        <div id="imgTest"></div>
-        
         <script type="module" src="../js/open_file.js"></script>
-        <script type="module" src="../js/client_send.js"></script>
-        <script>
-            function openDevTools(){
-                //nw.Window.get().showDevTools();
-            }            
-        </script>        
     </body>
 </html>

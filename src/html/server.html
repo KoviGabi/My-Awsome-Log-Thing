@@ -2,36 +2,18 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Server</title>
+        <title>Server App</title>
         <link rel="stylesheet" href="../css/server.css">
     </head>
-    <body onload='openDevTools()'>
-        <div id="imgTest"></div>
-        <div id="videoTest"></div>
-        <div id="logs"></div>
-        
+    <body>
         <script type="module" src="../js/server.js"></script>
-        <script type="module" src="../js/json_handler.js"></script>
-        <script>
-            function openDevTools(){
-                nw.Window.get().showDevTools();
-            }            
-        </script>
         <script type="text/javascript">    
+            require('nw.gui').Window.get().maximize();
             var menu = new nw.Menu({ type: 'menubar' });
-
             menu.append(new nw.MenuItem({
                 label: 'Open new Client',
                 click: function(){
-                    var parentWin = window;
-    
-                    nw.Window.open('./html/client.html', {}, function(win) {
-                        parentWin.localStorage.setItem('child_open', true);
-    
-                        win.on('closed', function() {
-                            parentWin.localStorage.removeItem('child_open');
-                        });
-                    });
+                    nw.Window.open('./html/client.html');                    
                 }
             }));    
             nw.Window.get().menu = menu;
