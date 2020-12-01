@@ -2,7 +2,10 @@ import {Json_Handler} from "./json_handler.js";
 import {Base64_Handler} from "./base64_handler.js";
 import {Unknown_Handler} from "./unknown_handler.js";
 
-export function HandlerSelector(){
+var data;
+
+export function HandlerSelector(srcData){
+    data = srcData;
     if (DataHandler("JSON")){
         if (DataHandler("base64")){
             DataHandler("else");

@@ -9,7 +9,7 @@ server.on('connection', function(socket) {
         data += d;
     });
     socket.on('close', function(){
-        HandlerSelector();
+        HandlerSelector(data);
         data = "";
     });
     socket.on('error', function(e){
