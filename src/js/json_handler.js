@@ -12,21 +12,23 @@ export function Json_Handler(data){
     if(type == "json"){
         var srcData = Buffer.from(data.split(",")[1], "base64").toString();
         jsonData = JSON.parse(srcData);
-    }
-    else{
+    } else{
         jsonData = JSON.parse(data);
     }
-    malt_type = jsonData.malt_type.toUpperCase();
-    malt_data = jsonData.malt_data;
-    LogWriter();    
-    return true;
+    if (jsonData.malt_type && jsonData.malt_data){
+        malt_type = jsonData.malt_type.toUpperCase();
+        malt_data = jsonData.malt_data;
+    } else{
+        malt_type = "SOMETHING";
+        malt_data = JSON.stringify(jsonData);
+    }
+    LogWriter();
 }
-function LogWriter() {
+function LogWriter(){
     var p = document.createElement("P");
-    if (log_types[malt_type]) {
+    if (log_types[malt_type]){
         p.className = malt_type;
-    } 
-    else {
+    } else{
         p.className = "SOMETHING";
     }    
     p.innerHTML = (malt_type + ": " + malt_data);

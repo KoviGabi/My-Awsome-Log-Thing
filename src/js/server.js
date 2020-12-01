@@ -7,14 +7,14 @@ var server = net.createServer();
 var data = "";
 
 server.on('connection', function(socket) {
-    socket.on('data', function(d) {    
+    socket.on('data', function(d){    
         data += d;
     });
-    socket.on('close', function() {
+    socket.on('close', function(){
         HandlerSelector();
         data = "";
     });
-    socket.on('error', function(e) {
+    socket.on('error', function(e){
         console.log("Error: " + e.message);
     });
 }).listen(9999);
@@ -28,7 +28,7 @@ function HandlerSelector(){
 }
 function DataHandler(handler){
     try {
-        switch (handler) {
+        switch (handler){
             case "JSON":
                 Json_Handler(data);
                 break;
@@ -42,7 +42,7 @@ function DataHandler(handler){
                 break;
         }
         return false;
-    } catch (e) {
+    } catch (e){
         return true;
     }
 }

@@ -7,14 +7,11 @@ export function Base64_Handler(data){
 
     if(type == "image"){
         ShowMediaFile(image, data);
-    }
-    else if(type == "video"){
+    } else if(type == "video"){
         ShowMediaFile(video, data);
-    }
-    else if(type == "audio"){
+    } else if(type == "audio"){
         ShowMediaFile(audio, data);
-    }
-    else{
+    } else{
         throw "Not media file!";
     }
 }
