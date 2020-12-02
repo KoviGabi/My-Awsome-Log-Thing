@@ -1,13 +1,10 @@
-const log_types = {
-    SQL: "SQL", ERROR: "ERROR", EXCEPTION: "EXCEPTION", LOG: "LOG"
-};
-
-var malt_type;
-var malt_data;
-var jsonData;
+import {JsonLogWriter} from "./log_writer.js";
 
 export function Json_Handler(data){
     var type = data.substring(data.indexOf("/")+1, data.indexOf(";"));
+    var malt_type;
+    var malt_data;
+    var jsonData;    
 
     if(type == "json"){
         var srcData = Buffer.from(data.split(",")[1], "base64").toString();
@@ -22,15 +19,5 @@ export function Json_Handler(data){
         malt_type = "SOMETHING";
         malt_data = JSON.stringify(jsonData);
     }
-    LogWriter();
-}
-function LogWriter(){
-    var p = document.createElement("P");
-    if (log_types[malt_type]){
-        p.className = malt_type;
-    } else{
-        p.className = "SOMETHING";
-    }    
-    p.innerHTML = (malt_type + ": " + malt_data);
-    document.body.appendChild(p);
+    JsonLogWriter(malt_type, malt_data);
 }

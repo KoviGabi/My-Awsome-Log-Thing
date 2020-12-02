@@ -1,17 +1,25 @@
-body {background-color: black;}
-
+body {
+    background-color: white
+}
 .SQL{
-    color:cyan;
+    color:blue
 }
 .ERROR{
-    color:red;
+    color:red
 }
 .EXCEPTION{
-    color:yellow;
+    color:darkorange
 }
 .LOG{
-    color:white;
+    color:black
 }
 .SOMETHING{
     color:grey
+}
+.TIME{
+    color:black
+}
+.MEDIA{
+    vertical-align: top;
+    text-align: left;
 }

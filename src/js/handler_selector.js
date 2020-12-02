@@ -2,17 +2,15 @@ import {Json_Handler} from "./json_handler.js";
 import {Base64_Handler} from "./base64_handler.js";
 import {Unknown_Handler} from "./unknown_handler.js";
 
-var data;
-
 export function HandlerSelector(srcData){
-    data = srcData;
-    if (DataHandler("JSON")){
-        if (DataHandler("base64")){
-            DataHandler("else");
+    var data = srcData;
+    if (DataHandler("JSON", data)){
+        if (DataHandler("base64", data)){
+            DataHandler("else", data);
         }
     }
 }
-function DataHandler(handler){
+function DataHandler(handler, data){
     try {
         switch (handler){
             case "JSON":
@@ -22,7 +20,7 @@ function DataHandler(handler){
                 Base64_Handler(data);
                 break;
             case "else":
-                Unknown_Handler(data, 1000);
+                Unknown_Handler(data);
                 break;
             default:
                 break;
