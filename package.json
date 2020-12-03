@@ -8,6 +8,7 @@
   },
   "author": "Kovács Gábor Tamás - J2TZ4L",
   "dependencies": {
+    "babel-plugin-wildcard": "^6.0.0",
     "nw": "^0.49.2"
   },
   "devDependencies": {
