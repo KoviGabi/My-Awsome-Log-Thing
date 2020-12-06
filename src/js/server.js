@@ -1,4 +1,4 @@
-import {HandlerSelector} from "./handler_selector.js";
+import {Handler} from "./handler.js";
 
 var net = require('net');
 var server = net.createServer();
@@ -9,7 +9,7 @@ server.on('connection', function(socket) {
         data += d;
     });
     socket.on('close', function(){
-        HandlerSelector(data);
+        Handler(data);
         data = "";
     });
     socket.on('error', function(e){
