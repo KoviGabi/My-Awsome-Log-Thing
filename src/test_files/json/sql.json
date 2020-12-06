@@ -1,4 +1,4 @@
 {
-    "malt_type": "sql",
-    "malt_data": "SELECT * FROM TABLE1"
+    "log_type": "sql",
+    "log_data": "SELECT * FROM TABLE1"
 }

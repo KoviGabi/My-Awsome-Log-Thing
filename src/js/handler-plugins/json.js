@@ -4,8 +4,8 @@ const log_types = {
 var span;
 function Json_Handler(data){
     var type = data.substring(data.indexOf("/")+1, data.indexOf(";"));
-    var malt_type;
-    var malt_data;
+    var log_type;
+    var log_data;
     var jsonData;
     if(type == "json"){
         var srcData = Buffer.from(data.split(",")[1], "base64").toString();
@@ -13,14 +13,14 @@ function Json_Handler(data){
     } else{
         jsonData = JSON.parse(data);
     }
-    if (jsonData.malt_type && jsonData.malt_data){
-        malt_type = jsonData.malt_type.toUpperCase();
-        malt_data = jsonData.malt_data;
+    if (jsonData.log_type && jsonData.log_data){
+        log_type = jsonData.log_type.toUpperCase();
+        log_data = jsonData.log_data;
     } else{
-        malt_type = "SOMETHING";
-        malt_data = JSON.stringify(jsonData);
+        log_type = "SOMETHING";
+        log_data = JSON.stringify(jsonData);
     }
-    JsonLogWriter(malt_type, malt_data);
+    JsonLogWriter(log_type, log_data);
 }
 function JsonLogWriter(type, data){
     span = document.createElement("SPAN");

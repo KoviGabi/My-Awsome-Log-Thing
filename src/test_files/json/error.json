@@ -1,4 +1,4 @@
 {
-    "malt_type": "error",
-    "malt_data": "Page not found!"
+    "log_type": "error",
+    "log_data": "Page not found!"
 }
