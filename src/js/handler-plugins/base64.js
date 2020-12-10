@@ -1,5 +1,5 @@
 var span;
-function Base64_Handler(data){
+function Handler(data){
     var type = data.substring(data.indexOf(":")+1, data.indexOf("/"));
     if(type == "image"){        
         var image = document.createElement("IMG");
@@ -22,8 +22,8 @@ function MediaLogWriter(type, data){
     span = type;
 }
 module.exports = {
-    Test: function(data){
-        Base64_Handler(data);
+    Handle: function(data){
+        Handler(data);
         return span;
     }    
 }

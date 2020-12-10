@@ -2,22 +2,24 @@ const log_types = {
     SQL: "SQL", ERROR: "ERROR", EXCEPTION: "EXCEPTION", LOG: "LOG"
 };
 var span;
-function Json_Handler(data){
-    var type = data.substring(data.indexOf("/")+1, data.indexOf(";"));
+function Handler(data){
     var log_type;
     var log_data;
     var jsonData;
-    if(type == "json"){
+    if(data.substring(data.indexOf("/")+1, data.indexOf(";")) == "json"){
         var srcData = Buffer.from(data.split(",")[1], "base64").toString();
         jsonData = JSON.parse(srcData);
     } else{
         jsonData = JSON.parse(data);
     }
-    if (jsonData.log_type && jsonData.log_data){
+    if (jsonData.log_type){
         log_type = jsonData.log_type.toUpperCase();
+    } else{
+        log_type = "JSON";
+    }
+    if (jsonData.log_data){
         log_data = jsonData.log_data;
     } else{
-        log_type = "SOMETHING";
         log_data = JSON.stringify(jsonData);
     }
     JsonLogWriter(log_type, log_data);
@@ -32,8 +34,8 @@ function JsonLogWriter(type, data){
     span.innerHTML = type + ": " + data;
 }
 module.exports = {
-    Test: function(data){
-        Json_Handler(data);
+    Handle: function(data){
+        Handler(data);
         return span;
     }    
 }

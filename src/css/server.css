@@ -1,24 +1,10 @@
-body {
-    background-color: white
-}
-.SQL{
-    color:blue
-}
-.ERROR{
-    color:red
-}
-.EXCEPTION{
-    color:darkorange
-}
-.LOG{
-    color:black
-}
-.SOMETHING{
-    color:grey
-}
-.TIME{
-    color:black
-}
+body {background-color: white}
+.SQL{color:blue}
+.ERROR{color:red}
+.EXCEPTION{color:darkorange}
+.LOG{color:black}
+.SOMETHING{color:grey}
+.TIME{color:black}
 .MEDIA{
     vertical-align: top;
     text-align: left;
