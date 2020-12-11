@@ -37,4 +37,7 @@ function Show(span){
   var div = Time();
   div.appendChild(span);
   document.body.appendChild(div);
-}
+} //body before 
+//monospace chartype
+//5px margó és padding és szürke vonal
+//piros háttér error, üzenet piros szöveg

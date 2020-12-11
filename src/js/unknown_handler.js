@@ -1,7 +1,7 @@
-var span;
 export function Unknown_Handler(data){
-    if (DataHandler(data, "base64")){
-        DataHandler(data, "string");        
+    let span;
+    if ((span = DataHandler(data, "base64")) === true){
+        span = DataHandler(data, "string");        
     }
     return span;
 }
@@ -13,28 +13,26 @@ function DataHandler(data, handler){
             case "base64":
                 encodedData = Buffer.from(data.split(",")[1], 'base64').toString();
                 type = data.substring(data.indexOf(":")+1, data.indexOf(";"));
-                UnknownWriter(type, encodedData);
-                break;
+                return UnknownWriter(type, encodedData);
             case "string":
                 encodedData = data;
                 type = "string";
-                UnknownWriter(type, encodedData);
-                break;
+                return UnknownWriter(type, encodedData);
             default:
-                break;
+                return false;
         }
-        return false;
     } catch (e){
         return true;
     }
 }
 export function UnknownWriter(type, data){
-    var length = 1000;
-    span = document.createElement("SPAN");
+    var length = 1024;
+    var span = document.createElement("SPAN");
     span.className = "SOMETHING";
     if (data.length < length){
         span.innerHTML = type.toUpperCase() + ": " + data;
     } else{
         span.innerHTML = type.toUpperCase() + ": Data is longer than " + length + " characters!";
     }
+    return span;
 }

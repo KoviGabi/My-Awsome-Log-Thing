@@ -1,7 +1,6 @@
 const log_types = {
     SQL: "SQL", ERROR: "ERROR", EXCEPTION: "EXCEPTION", LOG: "LOG"
 };
-var span;
 function Handler(data){
     var log_type;
     var log_data;
@@ -22,20 +21,16 @@ function Handler(data){
     } else{
         log_data = JSON.stringify(jsonData);
     }
-    JsonLogWriter(log_type, log_data);
+    return JsonLogWriter(log_type, log_data);
 }
 function JsonLogWriter(type, data){
-    span = document.createElement("SPAN");
+    var span = document.createElement("SPAN");
     if (log_types[type]){
         span.className = type;
     } else{
         span.className = "SOMETHING";
     }
     span.innerHTML = type + ": " + data;
+    return span;
 }
-module.exports = {
-    Handle: function(data){
-        Handler(data);
-        return span;
-    }    
-}
+module.exports = {Handle: Handler}
