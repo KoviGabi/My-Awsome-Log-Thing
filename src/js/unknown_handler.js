@@ -6,8 +6,8 @@ export function Unknown_Handler(data){
     return span;
 }
 function DataHandler(data, handler){
-    var encodedData;
-    var type;
+    let encodedData;
+    let type;
     try {
         switch (handler){
             case "base64":
@@ -26,13 +26,17 @@ function DataHandler(data, handler){
     }
 }
 export function UnknownWriter(type, data){
-    var length = 1024;
-    var span = document.createElement("SPAN");
+    let length = 1024;
+    let type_span = document.createElement("SPAN");
+    type_span.innerHTML = type.toUpperCase() + ":";
+    type_span.id = "SOMETHING"
+    let span = document.createElement("SPAN");
     span.className = "SOMETHING";
     if (data.length < length){
-        span.innerHTML = type.toUpperCase() + ": " + data;
+        span.innerHTML = " " + data;
     } else{
-        span.innerHTML = type.toUpperCase() + ": Data is longer than " + length + " characters!";
+        span.innerHTML = " Data is longer than " + length + " characters!";
     }
-    return span;
+    type_span.appendChild(span);
+    return type_span;
 }

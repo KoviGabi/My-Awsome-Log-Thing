@@ -1,22 +1,21 @@
 import {Unknown_Handler} from "./unknown_handler.js";
 
-var glob = require('glob');
-var path = require('path');
+let glob = require('glob');
+let path = require('path');
 
 export function Handler(data){
-  var i = 0;
-  var plugins = [];
+  let i = 0;
+  let plugins = [];
   glob.sync(path.resolve("js/handler-plugins", '*.js')).forEach(function(file){
     plugins[i++] = require(file);
-    console.log(plugins[i-1]);
   });
-  for (var j = 0; j < plugins.length + 1; j++) {
+  for (let j = 0; j < plugins.length + 1; j++) {
     try {
       if (j == plugins.length) {
         Show(Unknown_Handler(data));
       }
       else if (plugins[j].Handle(data)) {
-        var span = plugins[j].Handle(data);
+        let span = plugins[j].Handle(data);
         Show(span);
         j = plugins.length + 1;
       }
@@ -26,18 +25,19 @@ export function Handler(data){
   }
 }
 function Time(){
-  var date = new Date();
-  var time = date.toTimeString().split(' ')[0];
-  var div = document.createElement("DIV");
+  let date = new Date();
+  let time = date.toTimeString().split(' ')[0];
+  let div = document.createElement("DIV");
   div.className = "TIME";
   div.innerHTML = time + " ";
   return div;
 }
 function Show(span){
-  var div = Time();
+  let line = document.createElement("HR");
+  let div = Time();
   div.appendChild(span);
   document.body.appendChild(div);
-} //body before 
-//monospace chartype
-//5px margó és padding és szürke vonal
-//piros háttér error, üzenet piros szöveg
+  document.body.appendChild(line);
+  let scrolldown = (document.scrollingElement || document.body);
+  scrolldown.scrollTop = scrolldown.scrollHeight;
+}

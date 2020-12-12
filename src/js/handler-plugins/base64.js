@@ -1,13 +1,13 @@
 function Handler(data){
-    var type = data.substring(data.indexOf(":")+1, data.indexOf("/"));
+    let type = data.substring(data.indexOf(":")+1, data.indexOf("/"));
     if(type == "image"){        
-        var image = document.createElement("IMG");
+        let image = document.createElement("IMG");
         return MediaLogWriter(image, data);
     } else if(type == "video"){
-        var video = document.createElement("VIDEO");
+        let video = document.createElement("VIDEO");
         return MediaLogWriter(video, data);
     } else if(type == "audio"){  
-        var audio = document.createElement("AUDIO");
+        let audio = document.createElement("AUDIO");
         return MediaLogWriter(audio, data);
     } else{
         throw "Not handled media file!";

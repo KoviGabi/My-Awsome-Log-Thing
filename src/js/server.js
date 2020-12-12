@@ -1,8 +1,8 @@
 import {Handler} from "./handler.js";
 
-var net = require('net');
-var server = net.createServer();
-var data = "";
+let net = require('net');
+let server = net.createServer();
+let data = "";
 
 server.on('connection', function(socket) {
     socket.on('data', function(d){    

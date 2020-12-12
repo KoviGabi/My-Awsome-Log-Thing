@@ -1,11 +1,49 @@
+html{font-family: monospace;}
 body {background-color: white}
-.SQL{color:blue}
-.ERROR{color:red}
-.EXCEPTION{color:darkorange}
-.LOG{color:black}
-.SOMETHING{color:grey}
+div {
+    padding: 1px;
+    margin: 3px;
+}
+hr {
+    margin-left: 0px;
+    width: 475px;
+    border: none;
+    height: 1px;
+    background-color: lightgrey;
+}
+
+#SQL{
+    background-color:blue;
+    color: white;}
+#SQL > .SQL{
+    background-color:white;
+    color: blue;}
+#ERROR{
+    background-color:red;
+    color: white;}
+#ERROR > .ERROR{
+    background-color:white;
+    color: red;}
+#EXCEPTION{
+    background-color:orange;
+    color: white;}
+#EXCEPTION > .EXCEPTION{
+    background-color:white;
+    color: orange;}
+#LOG{
+    background-color:black;
+    color: white;}
+#LOG > .LOG{
+    background-color:white;
+    color: black;}
+#SOMETHING{
+    background-color:gray;
+    color: white;}
+#SOMETHING > .SOMETHING{
+    background-color:white;
+    color: gray;}
+
 .TIME{color:black}
 .MEDIA{
     vertical-align: top;
-    text-align: left;
-}
+    text-align: left;}
