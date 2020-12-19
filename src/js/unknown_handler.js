@@ -15,9 +15,8 @@ function DataHandler(data, handler){
                 type = data.substring(data.indexOf(":")+1, data.indexOf(";"));
                 return UnknownWriter(type, encodedData);
             case "string":
-                encodedData = data;
                 type = "string";
-                return UnknownWriter(type, encodedData);
+                return UnknownWriter(type, data);
             default:
                 return false;
         }

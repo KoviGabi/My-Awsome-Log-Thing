@@ -1,0 +1,18 @@
+#This data file is too long for us to show. This is for testing our unhandled data's Unknown Handler function.
+#This will take some time to be enough characters, but I will try to do it without redundancy. 
+
+This thesis was very challenging, but also fun. After this thesis I am thinking about getting a job in this area.
+I really like web based programming a lot now. I will read and learn a lot about web programming, node.js and 
+frameworks like nw.js, because this area is awsome!
+I can thank's a lot to my supervisor, Laborci Gergely. He came up with the idea of this task/thesis.
+He gave me a lot with this great idea of his. If I become a web developer it will be because of him.
+
+Wow it's hard to write this much about almost nothing.
+I hope reading this easter egg makes you smile a bit whoever you are :)
+And congrats for finding this writing of mine :D
+
+This app is made by Kovács Gábor Tamás, J2TZ4L.
+PTE-MIK
+2020
+
+This dot will make this dissapear if you are only use this file for testing -->.

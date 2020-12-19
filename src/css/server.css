@@ -1,17 +1,16 @@
-html{font-family: monospace;}
-body {background-color: white}
 div {
     padding: 1px;
-    margin: 3px;
-}
+    margin: 3px;}
+html{font-family: monospace;}
 hr {
     margin-left: 0px;
     width: 475px;
     border: none;
     height: 1px;
-    background-color: lightgrey;
-}
-
+    background-color: lightgrey;}
+.MEDIA{
+    vertical-align: top;
+    text-align: left;}
 #SQL{
     background-color:blue;
     color: white;}
@@ -42,8 +41,3 @@ hr {
 #SOMETHING > .SOMETHING{
     background-color:white;
     color: gray;}
-
-.TIME{color:black}
-.MEDIA{
-    vertical-align: top;
-    text-align: left;}
