@@ -1,0 +1,4 @@
+
+00:00:01 EXCEPTION: Index is out of range
+00:00:03 LOG: Simple log message
+00:00:05 JSON: Some log..

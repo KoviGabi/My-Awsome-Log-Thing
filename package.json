@@ -4,7 +4,7 @@
   "description": "Log monitorozó alkalmazás",
   "scripts": {
     "dev": "nw src/",
-    "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ src/"
+    "prod": "nwbuild -p win32,win64,osx64,linux32,linux64 -o ./build src/"
   },
   "author": "Kovács Gábor Tamás - J2TZ4L",
   "dependencies": {
